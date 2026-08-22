@@ -1,31 +1,26 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:j27/app/app.dart';
 
-import 'package:j27/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('J27 e-commerce app splash screen and main render test', (WidgetTester tester) async {
     await tester.pumpWidget(const J27());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify Welcome text on SplashScreen
+    expect(find.text('Welcome to J27'), findsOneWidget);
+    expect(find.text('Your Favorite E-Commerce Store'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Advance time for splash screen timer transition
+    await tester.pumpAndSettle(const Duration(seconds: 3));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify Main Navigation / Home Screen rendered
+    expect(find.text('J27 E-Commerce'), findsOneWidget);
+    expect(find.text('Wireless Headphones'), findsOneWidget);
+    expect(find.text('Smart Watch Series 7'), findsOneWidget);
+
+    // Verify bottom navigation items
+    expect(find.byIcon(Icons.home), findsOneWidget);
+    expect(find.byIcon(Icons.shopping_cart), findsOneWidget);
+    expect(find.byIcon(Icons.person), findsOneWidget);
   });
 }

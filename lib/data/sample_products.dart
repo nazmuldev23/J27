@@ -1,0 +1,58 @@
+import '../models/product.dart';
+
+final List<Product> sampleProducts = [
+  const Product(
+    id: 'p1',
+    title: 'Wireless Headphones',
+    description: 'High quality wireless noise-canceling headphones with long battery life.',
+    price: 99.99,
+    imageUrl: 'https://picsum.photos/id/101/400/400',
+    category: 'Electronics',
+    rating: 4.8,
+  ),
+  const Product(
+    id: 'p2',
+    title: 'Smart Watch Series 7',
+    description: 'Track your health, fitness, and notifications with a crystal-clear AMOLED display.',
+    price: 199.50,
+    imageUrl: 'https://picsum.photos/id/102/400/400',
+    category: 'Electronics',
+    rating: 4.7,
+  ),
+  const Product(
+    id: 'p3',
+    title: 'Casual Leather Sneakers',
+    description: 'Comfortable and stylish premium genuine leather sneakers for daily wear.',
+    price: 79.00,
+    imageUrl: 'https://picsum.photos/id/103/400/400',
+    category: 'Fashion',
+    rating: 4.5,
+  ),
+  const Product(
+    id: 'p4',
+    title: 'Classic Denim Jacket',
+    description: 'Timeless style denim jacket made from high quality durable cotton.',
+    price: 65.00,
+    imageUrl: 'https://picsum.photos/id/104/400/400',
+    category: 'Fashion',
+    rating: 4.6,
+  ),
+  const Product(
+    id: 'p5',
+    title: 'Modern Desk Lamp',
+    description: 'Minimalist LED desk lamp with touch brightness controls and warm color options.',
+    price: 34.99,
+    imageUrl: 'https://picsum.photos/id/106/400/400',
+    category: 'Home',
+    rating: 4.4,
+  ),
+  const Product(
+    id: 'p6',
+    title: 'Stainless Steel Water Bottle',
+    description: 'Eco-friendly double-walled insulated water bottle keeps drinks cold for 24 hours.',
+    price: 24.50,
+    imageUrl: 'https://picsum.photos/id/107/400/400',
+    category: 'Accessories',
+    rating: 4.9,
+  ),
+];
