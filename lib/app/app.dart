@@ -1,17 +1,47 @@
 import 'package:flutter/material.dart';
-
+import '../providers/shop_provider.dart';
 import '../screens/splash_screen.dart';
 
-
-class J27 extends StatelessWidget {
+class J27 extends StatefulWidget {
   const J27({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'J27',
-      home: SplashScreen(),
+  State<J27> createState() => _J27State();
+}
 
+class _J27State extends State<J27> {
+  late final ShopProvider _shopProvider;
+
+  @override
+  void initState() {
+    super.initState();
+    _shopProvider = ShopProvider();
+  }
+
+  @override
+  void dispose() {
+    _shopProvider.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ShopProviderScope(
+      notifier: _shopProvider,
+      child: MaterialApp(
+        title: 'J27 E-Commerce',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.indigo,
+            foregroundColor: Colors.white,
+            elevation: 0,
+          ),
+        ),
+        home: const SplashScreen(),
+      ),
     );
   }
 }
