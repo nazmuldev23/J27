@@ -73,59 +73,126 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
+              Icon(Icons.person, size: 80,),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _nameController,
                 decoration: const InputDecoration(
-                  labelText: 'Full Name',
+                  //labelText: 'Full Name',
+                  hintText: 'Enter your full name',
                   prefixIcon: Icon(Icons.person_outline),
                   border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent
+                    )
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2,
+                    )
+                  ),
                 ),
                 validator: (val) => val == null || val.isEmpty ? 'Enter full name' : null,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
               TextFormField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  labelText: 'Email Address',
+                  //labelText: 'Email Address',
+                  hintText: 'Enter your email address',
                   prefixIcon: Icon(Icons.email_outlined),
                   border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent
+                    )
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2,
+                    )
+                  ),
                 ),
                 validator: (val) => val == null || !val.contains('@') ? 'Enter a valid email' : null,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
               TextFormField(
                 controller: _phoneController,
                 keyboardType: TextInputType.phone,
                 decoration: const InputDecoration(
-                  labelText: 'Phone Number',
+                  //labelText: 'Phone Number',
+                  hintText: 'Enter your phone number',
                   prefixIcon: Icon(Icons.phone_outlined),
                   border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent
+                    )
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2,
+                    )
+                  ),
                 ),
-                validator: (val) => val == null || val.isEmpty ? 'Enter phone number' : null,
+                validator: (val) => val == null || val.isEmpty ? 'Enter your phone number' : null,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
               TextFormField(
                 controller: _addressController,
                 decoration: const InputDecoration(
-                  labelText: 'Default Delivery Address',
+                  //labelText: 'Default Delivery Address',
+                  hintText: 'Your delivery address',
                   prefixIcon: Icon(Icons.location_on_outlined),
                   border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent
+                    )
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2,
+                    )
+                  ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
               TextFormField(
                 controller: _passwordController,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
-                  labelText: 'Password',
+                  //labelText: 'Password',
+                  hintText: 'Enter your password',
                   prefixIcon: const Icon(Icons.lock_outline),
                   suffixIcon: IconButton(
                     icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
                     onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
                   ),
                   border: const OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent
+                    )
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2,
+                    )
+                  ),
                 ),
                 validator: (val) => val == null || val.length < 6 ? 'Password must be at least 6 characters' : null,
               ),
@@ -134,8 +201,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 onPressed: _submitRegister,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: Theme.of(context).primaryColor,
-                  foregroundColor: Colors.white,
+                  // backgroundColor: Theme.of(context).primaryColor,
+                  //foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
                 child: const Text('Register', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
@@ -152,7 +219,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         MaterialPageRoute(builder: (_) => const LoginScreen()),
                       );
                     },
-                    child: const Text('Log In'),
+                    child: const Text('Log In',style:TextStyle(color: Colors.green)),
                   ),
                 ],
               ),
