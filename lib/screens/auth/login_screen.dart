@@ -6,6 +6,8 @@ import 'forgot_password_screen.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  static const String name = '/login-screen';
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -70,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
-              Icon(Icons.lock_person, size: 80, color: Theme.of(context).primaryColor),
+              Icon(Icons.lock_person, size: 80,),
               const SizedBox(height: 16),
               const Text(
                 'Welcome Back',
@@ -88,24 +90,51 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  labelText: 'Email Address',
+                  hintText: 'Enter your email address',
+                  //labelText: 'Email Address',
                   prefixIcon: Icon(Icons.email_outlined),
                   border: OutlineInputBorder(),
+
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent
+                    )
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2,
+                    )
+                  ),
                 ),
                 validator: (val) => val == null || !val.contains('@') ? 'Enter a valid email' : null,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
               TextFormField(
                 controller: _passwordController,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
-                  labelText: 'Password',
+                  hintText: 'Enter your password',
+                  //labelText: 'Password',
                   prefixIcon: const Icon(Icons.lock_outline),
                   suffixIcon: IconButton(
                     icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
                     onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
                   ),
                   border: const OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent
+                    )
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2,
+                    )
+                  ),
                 ),
                 validator: (val) => val == null || val.length < 6 ? 'Password must be at least 6 characters' : null,
               ),
@@ -118,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       MaterialPageRoute(builder: (_) => const ForgotPasswordScreen()),
                     );
                   },
-                  child: const Text('Forgot Password?'),
+                  child: const Text('Forgot Password?',style: TextStyle(color: Colors.red)),
                 ),
               ),
               const SizedBox(height: 20),
@@ -126,8 +155,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: _submitLogin,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: Theme.of(context).primaryColor,
-                  foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
                 child: const Text('Log In', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
@@ -144,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(builder: (_) => const RegisterScreen()),
                       );
                     },
-                    child: const Text('Register'),
+                    child: const Text('Register',style: TextStyle(color: Colors.green)),
                   ),
                 ],
               ),
