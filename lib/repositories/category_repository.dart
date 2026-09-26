@@ -3,29 +3,29 @@ import '../models/category_model.dart';
 class CategoryRepository {
   final List<CategoryModel> _categories = [
     const CategoryModel(
-      id: 'cat_electronics',
-      name: 'Electronics',
+      id: 'cat_jersey',
+      name: 'Jersey',
       imageUrl: '',
-      description: 'Gadgets, audio devices, smart wearables & peripherals.',
+      description: 'customize jersey',
     ),
     const CategoryModel(
-      id: 'cat_fashion',
-      name: 'Fashion & Apparel',
+      id: 'cat_Football_Accessories',
+      name: 'Football Accessories',
       imageUrl: '',
-      description: 'Clothing, footwear, bags, and lifestyle accessories.',
+      description: 'Football, football boots, shin guards, goalkeeper Gloves, training Cones, football Pump',
     ),
     const CategoryModel(
-      id: 'cat_home',
-      name: 'Home & Kitchen',
+      id: 'cat_Sports_Clothing',
+      name: 'Sports Clothing',
       imageUrl: '',
-      description: 'Kitchenware, home decor, appliances, and living space essentials.',
+      description: 'Football shorts, training T-Shirt, goalkeeper pants',
     ),
-    const CategoryModel(
-      id: 'cat_sports',
-      name: 'Sports & Outdoors',
-      imageUrl: '',
-      description: 'Fitness gear, outdoor clothing, travel, and athletic equipment.',
-    ),
+    // const CategoryModel(
+    //   id: 'cat_sports',
+    //   name: 'Sports & Outdoors',
+    //   imageUrl: '',
+    //   description: 'Fitness gear, outdoor clothing, travel, and athletic equipment.',
+    // ),
   ];
 
   Future<List<CategoryModel>> getAllCategories() async {
