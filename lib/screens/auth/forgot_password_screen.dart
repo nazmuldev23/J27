@@ -70,7 +70,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   //labelText: 'Email Address',
-                  hintText: 'Enter your email address',
+                  hintText: 'Enter your register email address',
                   prefixIcon: Icon(Icons.email_outlined),
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
