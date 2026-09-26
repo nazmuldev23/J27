@@ -51,7 +51,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
-              const Icon(Icons.mark_email_read_outlined, size: 80, color: Colors.indigo),
+              Icon(Icons.mark_email_read_outlined, size: 80,),
               const SizedBox(height: 16),
               const Text(
                 'Forgot Your Password?',
@@ -69,9 +69,22 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  labelText: 'Email Address',
+                  //labelText: 'Email Address',
+                  hintText: 'Enter your email address',
                   prefixIcon: Icon(Icons.email_outlined),
                   border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent
+                    )
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2,
+                    )
+                  ),
                 ),
                 validator: (val) => val == null || !val.contains('@') ? 'Enter a valid email' : null,
               ),
@@ -80,7 +93,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 onPressed: _sendResetLink,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: Theme.of(context).primaryColor,
+                  //backgroundColor: Theme.of(context).primaryColor,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
