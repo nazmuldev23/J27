@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '../providers/shop_provider.dart';
-import 'cart_screen.dart';
-import 'home_screen.dart';
+import 'customer/home_screen.dart';
+import 'customer/category_screen.dart';
+import 'customer/cart_screen.dart';
+import 'customer/wishlist_screen.dart';
+import 'customer/profile_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -13,94 +16,77 @@ class MainNavigationScreen extends StatefulWidget {
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
-    const HomeScreen(),
-    const CartScreen(),
-    const ProfileScreen(),
+  final List<Widget> _screens = const [
+    HomeScreen(),
+    CategoryScreen(),
+    CartScreen(),
+    WishlistScreen(),
+    ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    final cartCount = ShopProvider.of(context).cartCount;
+    final shop = ShopProviderScope.of(context);
+    final cartCount = shop.cartItems.length;
 
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
-        children: _pages,
+        children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        onTap: (index) => setState(() => _currentIndex = index),
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.indigo,
         unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
         items: [
           const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
             label: 'Home',
           ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.grid_view_outlined),
+            activeIcon: Icon(Icons.grid_view),
+            label: 'Categories',
+          ),
           BottomNavigationBarItem(
-            icon: Badge(
-              label: Text('$cartCount'),
-              isLabelVisible: cartCount > 0,
-              child: const Icon(Icons.shopping_cart),
+            icon: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                const Icon(Icons.shopping_cart_outlined),
+                if (cartCount > 0)
+                  Positioned(
+                    right: -6,
+                    top: -6,
+                    child: CircleAvatar(
+                      radius: 8,
+                      backgroundColor: Colors.red,
+                      child: Text(
+                        '$cartCount',
+                        style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+              ],
             ),
+            activeIcon: const Icon(Icons.shopping_cart),
             label: 'Cart',
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.favorite_border),
+            activeIcon: Icon(Icons.favorite),
+            label: 'Wishlist',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            activeIcon: Icon(Icons.person),
             label: 'Profile',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('My Profile')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: const [
-          CircleAvatar(
-            radius: 40,
-            backgroundColor: Colors.indigo,
-            child: Icon(Icons.person, size: 50, color: Colors.white),
-          ),
-          SizedBox(height: 12),
-          Center(
-            child: Text(
-              'J27 Customer',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Center(
-            child: Text(
-              'user@j27ecommerce.com',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          SizedBox(height: 24),
-          ListTile(
-            leading: Icon(Icons.shopping_bag_outlined),
-            title: Text('My Orders'),
-            trailing: Icon(Icons.arrow_forward_ios, size: 16),
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.favorite_border),
-            title: Text('Wishlist'),
-            trailing: Icon(Icons.arrow_forward_ios, size: 16),
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.settings_outlined),
-            title: Text('Settings'),
-            trailing: Icon(Icons.arrow_forward_ios, size: 16),
           ),
         ],
       ),
