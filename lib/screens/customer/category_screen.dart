@@ -28,12 +28,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
     final filteredProducts = _activeCategoryFilter == null
         ? shop.products
-        : shop.products.where((p) => p.categoryId == _activeCategoryFilter).toList();
+        : shop.products
+              .where((p) => p.categoryId == _activeCategoryFilter)
+              .toList();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Categories & Products'),
-      ),
+      appBar: AppBar(title: const Text('Categories & Products')),
       body: Column(
         children: [
           // Category filter chip bar
@@ -47,7 +47,16 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 ChoiceChip(
                   label: const Text('All Categories'),
                   selected: _activeCategoryFilter == null,
-                  onSelected: (_) => setState(() => _activeCategoryFilter = null),
+                  selectedColor: Colors.orange,
+                   backgroundColor: Colors.grey.shade200,
+                   labelStyle: TextStyle(
+                        color: _activeCategoryFilter == null
+                            ? Colors.white
+                            : Colors.black,
+                      ),
+
+                  onSelected: (_) =>
+                      setState(() => _activeCategoryFilter = null),
                 ),
                 const SizedBox(width: 8),
                 ...categories.map((cat) {
@@ -57,6 +66,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     child: ChoiceChip(
                       label: Text(cat.name),
                       selected: isSelected,
+                      selectedColor: Colors.orange,
+
+                      // Selected না হলে এই color
+                      backgroundColor: Colors.grey.shade200,
+
+                      // Text color
+                      labelStyle: TextStyle(
+                        color: isSelected ? Colors.white : Colors.black,
+                      ),
                       onSelected: (val) {
                         setState(() {
                           _activeCategoryFilter = val ? cat.id : null;
@@ -79,12 +97,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   )
                 : GridView.builder(
                     padding: const EdgeInsets.all(16),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.72,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.72,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                        ),
                     itemCount: filteredProducts.length,
                     itemBuilder: (context, index) {
                       final product = filteredProducts[index];
@@ -97,7 +116,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
     );
   }
 
-  Widget _buildProductGridCard(BuildContext context, ShopProvider shop, ProductModel product) {
+  Widget _buildProductGridCard(
+    BuildContext context,
+    ShopProvider shop,
+    ProductModel product,
+  ) {
     final isWishlisted = shop.isWishlisted(product.id);
 
     return Card(
@@ -123,7 +146,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     width: double.infinity,
                     color: Colors.indigo.shade50,
                     child: Center(
-                      child: Icon(Icons.shopping_bag, size: 40, color: Colors.indigo.shade300),
+                      child: Icon(
+                        Icons.shopping_bag,
+                        size: 40,
+                        color: Colors.indigo.shade300,
+                      ),
                     ),
                   ),
                   Positioned(
@@ -155,7 +182,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     product.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Row(
