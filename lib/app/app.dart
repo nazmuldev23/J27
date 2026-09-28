@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:j27/screens/customer/profile_screen.dart';
 import 'package:j27/screens/customer/wishlist_screen.dart';
 import '../providers/shop_provider.dart';
 import '../screens/auth/login_screen.dart';
@@ -62,6 +63,7 @@ class _J27State extends State<J27> {
           LoginScreen.name: (context) => const LoginScreen(),
           MainNavigationScreen.name: (context) => const MainNavigationScreen(),
           WishlistScreen.name: (context)=> const  WishlistScreen(),
+          ProfileScreen.name: (context)=> const ProfileScreen(),
 
         },
       ),

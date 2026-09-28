@@ -45,9 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.message,color: Colors.black,),
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, WishlistScreen.name);
-            },
+            onPressed: () {},
           ),
           IconButton(
             icon: const Icon(Icons.favorite_border,color: Colors.black,),
