@@ -42,7 +42,7 @@ class _CartScreenState extends State<CartScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Cart (${cartItems.length})'),
+        title: Text('My Cart (${cartItems.length})',style:TextStyle(fontWeight: FontWeight.bold)),
         actions: [
           if (cartItems.isNotEmpty)
             TextButton(

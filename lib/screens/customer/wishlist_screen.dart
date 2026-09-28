@@ -13,7 +13,12 @@ class WishlistScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Wishlist (${wishlist.length})'),
+        title: Text(
+          'My Wishlist (${wishlist.length})',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: wishlist.isEmpty
           ? Center(

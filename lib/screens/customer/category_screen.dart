@@ -33,7 +33,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
               .toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Categories & Products')),
+      appBar: AppBar(
+          title: Text('Categories & Products',style: TextStyle(fontWeight: FontWeight.bold))),
       body: Column(
         children: [
           // Category filter chip bar
