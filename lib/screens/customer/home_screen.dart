@@ -31,31 +31,32 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Row(
           children: [
             const Icon(Icons.shopping_bag_outlined, color: Colors.black, size: 28),
             const SizedBox(width: 8),
             const Text(
               'J27',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ],
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.message),
+            icon: const Icon(Icons.message,color: Colors.black,),
             onPressed: () {
               Navigator.pushReplacementNamed(context, WishlistScreen.name);
             },
           ),
           IconButton(
-            icon: const Icon(Icons.favorite_border),
+            icon: const Icon(Icons.favorite_border,color: Colors.black,),
             onPressed: () {
               Navigator.pushReplacementNamed(context, WishlistScreen.name);
             },
           ),
           IconButton(
-            icon: const Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert,color: Colors.black,),
             onPressed: () {
               Navigator.pushNamed(context, ProfileScreen.name);
             },
@@ -77,8 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   });
                 },
                 decoration: InputDecoration(
-                  hintText: 'Search products, categories...',
-                  prefixIcon: const Icon(Icons.search),
+                  hintText: 'Search products...',
+                  hintStyle: TextStyle(color: Colors.white),
+                  prefixIcon: Icon(Icons.search,color: Colors.white),
                   suffixIcon: _searchQuery.isNotEmpty
                       ? IconButton(
                           icon: const Icon(Icons.clear),
@@ -89,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         )
                       : null,
                   filled: true,
-                  fillColor: Colors.orange.shade100,
+                  fillColor: Colors.black54,
                   contentPadding: const EdgeInsets.symmetric(vertical: 0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -251,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MaterialPageRoute(builder: (_) => const CategoryScreen()),
                   );
                 },
-                child: const Text('See All'),
+                child: const Text('See All',style: TextStyle(color: Colors.black),),
               ),
             ],
           ),
