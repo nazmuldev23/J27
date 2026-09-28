@@ -34,7 +34,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text('Categories & Products',style: TextStyle(fontWeight: FontWeight.bold))),
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Categories & Products',
+          style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Column(
         children: [
           // Category filter chip bar
@@ -49,12 +56,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   label: const Text('All Categories'),
                   selected: _activeCategoryFilter == null,
                   selectedColor: Colors.orange,
-                   backgroundColor: Colors.grey.shade200,
-                   labelStyle: TextStyle(
-                        color: _activeCategoryFilter == null
-                            ? Colors.white
-                            : Colors.black,
-                      ),
+                  backgroundColor: Colors.grey.shade200,
+                  labelStyle: TextStyle(
+                    color: _activeCategoryFilter == null
+                        ? Colors.white
+                        : Colors.black,
+                  ),
 
                   onSelected: (_) =>
                       setState(() => _activeCategoryFilter = null),

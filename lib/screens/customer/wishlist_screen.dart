@@ -13,10 +13,12 @@ class WishlistScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(
           'My Wishlist (${wishlist.length})',
           style: TextStyle(
-              fontWeight: FontWeight.bold,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
