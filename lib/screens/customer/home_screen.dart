@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: const Icon(Icons.favorite_border,color: Colors.black,),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, WishlistScreen.name);
+              Navigator.pushNamed(context, WishlistScreen.name);
             },
           ),
           IconButton(
