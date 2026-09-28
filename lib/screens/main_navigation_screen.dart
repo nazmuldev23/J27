@@ -9,6 +9,8 @@ import 'customer/profile_screen.dart';
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
 
+  static const String name = '/main-nav-screen';
+
   @override
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
 }
@@ -30,15 +32,39 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final cartCount = shop.cartItems.length;
 
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
+      body: Stack(
+        children: [
+          IndexedStack(index: _currentIndex, children: _screens),
+          Positioned.fill(
+            child: IgnorePointer(
+              child: Opacity(
+                opacity: 0.20,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                  'assets/background.png',
+                  fit: BoxFit.cover,
+                ),
+                    Center(
+                      child: Image.asset(
+                          'assets/logo.png',
+                          fit: BoxFit.fill,
+                          height: 300,
+                          width: 300
+                      ),
+                    )
+                  ],
+                )
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.indigo,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.orange,
+        unselectedItemColor: Colors.black,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
@@ -69,7 +95,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                       backgroundColor: Colors.red,
                       child: Text(
                         '$cartCount',
-                        style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -83,11 +113,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             activeIcon: Icon(Icons.favorite),
             label: 'Wishlist',
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-            label: 'Profile',
-          ),
+          // const BottomNavigationBarItem(
+          //   icon: Icon(Icons.person_outline),
+          //   activeIcon: Icon(Icons.person),
+          //   label: 'Profile',
+          // ),
         ],
       ),
     );
