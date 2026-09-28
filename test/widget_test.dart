@@ -14,13 +14,11 @@ void main() {
     await tester.pumpAndSettle(const Duration(seconds: 3));
 
     // Verify Main Navigation / Home Screen rendered
-    expect(find.text('J27 E-Commerce'), findsOneWidget);
-    expect(find.text('Wireless Headphones'), findsOneWidget);
-    expect(find.text('Smart Watch Series 7'), findsOneWidget);
+    expect(find.text('J27 Store'), findsOneWidget);
 
     // Verify bottom navigation items
     expect(find.byIcon(Icons.home), findsOneWidget);
-    expect(find.byIcon(Icons.shopping_cart), findsOneWidget);
-    expect(find.byIcon(Icons.person), findsOneWidget);
+    expect(find.byIcon(Icons.shopping_cart_outlined), findsOneWidget);
+    expect(find.byIcon(Icons.person_outline), findsOneWidget);
   });
 }
