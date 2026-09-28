@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:j27/screens/customer/profile_screen.dart';
+import 'package:j27/screens/customer/wishlist_screen.dart';
 import '../../providers/shop_provider.dart';
 import '../../models/product_model.dart';
 import 'category_screen.dart';
@@ -6,6 +8,8 @@ import 'product_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  static const String name = '/home-screen';
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -29,19 +33,31 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Row(
           children: [
-            const Icon(Icons.shopping_bag_outlined, color: Colors.white, size: 28),
+            const Icon(Icons.shopping_bag_outlined, color: Colors.black, size: 28),
             const SizedBox(width: 8),
             const Text(
-              'J27 Store',
+              'J27',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ],
         ),
         actions: [
           IconButton(
+            icon: const Icon(Icons.message),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, WishlistScreen.name);
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.favorite_border),
             onPressed: () {
-              // Navigated via tab bar or quick action
+              Navigator.pushReplacementNamed(context, WishlistScreen.name);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {
+              Navigator.pushNamed(context, ProfileScreen.name);
             },
           ),
         ],
@@ -73,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         )
                       : null,
                   filled: true,
-                  fillColor: Colors.grey.shade100,
+                  fillColor: Colors.orange.shade100,
                   contentPadding: const EdgeInsets.symmetric(vertical: 0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -185,20 +201,29 @@ class _HomeScreenState extends State<HomeScreen> {
             margin: const EdgeInsets.symmetric(horizontal: 16.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              gradient: const LinearGradient(
-                colors: [Colors.indigo, Colors.indigoAccent],
-              ),
             ),
-            padding: const EdgeInsets.all(20),
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              banner.title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                shadows: [Shadow(blurRadius: 4, color: Colors.black)],
-              ),
+            clipBehavior: Clip.antiAlias,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.asset(
+                  'assets/banner1.png',
+                  fit: BoxFit.cover,
+                ),
+
+                Padding(padding: const EdgeInsets.all(20),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(banner.title,
+                      style:const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      )
+                    ),
+                  ),
+                )
+              ],
             ),
           );
         },
