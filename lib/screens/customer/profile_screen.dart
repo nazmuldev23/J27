@@ -7,6 +7,7 @@ import '../admin/admin_dashboard_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
+  static const String name = '/profile-screen';
 
   @override
   Widget build(BuildContext context) {

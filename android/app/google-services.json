@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "385080465045",
+    "project_id": "ecommarce-by-jakir",
+    "storage_bucket": "ecommarce-by-jakir.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385080465045:android:5ece4cb7ec578825b16d9c",
+        "android_client_info": {
+          "package_name": "com.example.j27"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVkQpZ4MnLruurIA8A4vlxuVjzzzIJxiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,6 +4,7 @@ import 'product_detail_screen.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
+  static const String name = '/profile-screen';
 
   @override
   Widget build(BuildContext context) {
