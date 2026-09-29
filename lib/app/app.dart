@@ -42,8 +42,9 @@ class _J27State extends State<J27> {
             seedColor: Colors.indigo,
           ),
           appBarTheme: AppBarTheme(
+
             backgroundColor: Colors.transparent,
-            foregroundColor: Colors.white,
+            foregroundColor: Colors.black,
             elevation: 0,
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(

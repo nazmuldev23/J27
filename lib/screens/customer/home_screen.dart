@@ -282,13 +282,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       CircleAvatar(
                         radius: 28,
-                        backgroundColor: Colors.indigo.shade50,
+                        backgroundColor: Colors.orange,
                         child: Text(
                           cat.name[0],
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Theme.of(context).primaryColor,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -380,7 +380,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     width: double.infinity,
-                    color: Colors.indigo.shade50,
+                    color: Colors.indigo.shade100,
                     child: Center(
                       child: Icon(Icons.shopping_bag, size: 40, color: Colors.indigo.shade300),
                     ),

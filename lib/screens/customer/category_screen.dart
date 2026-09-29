@@ -35,6 +35,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+
         title: Text(
           'Categories & Products',
           style: TextStyle(
