@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:j27/screens/customer/profile_screen.dart';
 import 'package:j27/screens/customer/wishlist_screen.dart';
@@ -40,6 +41,39 @@ class _HomeScreenState extends State<HomeScreen> {
             const Text(
               'J27',
               style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            const SizedBox(width: 8,),
+            SizedBox(
+              width: 100,
+              child: AnimatedTextKit(
+                repeatForever: true,
+                animatedTexts: [
+                  FadeAnimatedText(
+                    'Quality',
+                    textStyle: TextStyle(
+                      color: Colors.red.shade400,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  FadeAnimatedText(
+                    'Style',
+                    textStyle: const TextStyle(
+                      color: Colors.purple,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  FadeAnimatedText(
+                    'Trust',
+                    textStyle: const TextStyle(
+                      color: Colors.orange,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
