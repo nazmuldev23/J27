@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final shop = ShopProviderScope.of(context);
 
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Row(
@@ -189,7 +190,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBannerSlider(ShopProvider shop) {
-    if (shop.banners.isEmpty) return const SizedBox.shrink();
+    if (shop.banners.isEmpty) {
+      return const SizedBox.shrink();
+    }
 
     return SizedBox(
       height: 160,
@@ -197,32 +200,63 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: shop.banners.length,
         itemBuilder: (context, index) {
           final banner = shop.banners[index];
+
           return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16.0),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
+              color: Colors.white,
               borderRadius: BorderRadius.circular(16),
             ),
             clipBehavior: Clip.antiAlias,
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset(
-                  'assets/banner1.png',
-                  fit: BoxFit.cover,
+                // Solid background
+                const ColoredBox(
+                  color: Colors.white,
                 ),
 
-                Padding(padding: const EdgeInsets.all(20),
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(banner.title,
-                      style:const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold
-                      )
+                // Banner image
+                Positioned.fill(
+                  child: Image.asset(
+                    'assets/banner1.png',
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                  ),
+                ),
+
+                // Optional dark overlay for title readability
+                Positioned.fill(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          Colors.black.withOpacity(0.35),
+                        ],
+                      ),
                     ),
                   ),
-                )
+                ),
+
+                // Banner title
+                Positioned(
+                  left: 20,
+                  right: 20,
+                  bottom: 18,
+                  child: Text(
+                    banner.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ],
             ),
           );

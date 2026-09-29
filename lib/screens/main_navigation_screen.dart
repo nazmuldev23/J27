@@ -34,20 +34,21 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          IndexedStack(index: _currentIndex, children: _screens),
           Positioned.fill(
             child: IgnorePointer(
               child: Opacity(
-                opacity: 0.20,
-                child: Center(
-                  child: Image.asset(
-                    'assets/background.png',
-                    fit: BoxFit.cover,
-                  ),
-                )
+                  opacity: 0.20,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/background.png',
+                      fit: BoxFit.cover,
+                    ),
+                  )
               ),
             ),
           ),
+          IndexedStack(index: _currentIndex, children: _screens),
+
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
