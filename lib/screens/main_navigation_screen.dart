@@ -39,21 +39,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             child: IgnorePointer(
               child: Opacity(
                 opacity: 0.20,
-                child: Stack(
-                  children: [
-                    Image.asset(
-                  'assets/background.png',
-                  fit: BoxFit.cover,
-                ),
-                    Center(
-                      child: Image.asset(
-                          'assets/logo.png',
-                          fit: BoxFit.fill,
-                          height: 300,
-                          width: 300
-                      ),
-                    )
-                  ],
+                child: Center(
+                  child: Image.asset(
+                    'assets/background.png',
+                    fit: BoxFit.cover,
+                  ),
                 )
               ),
             ),

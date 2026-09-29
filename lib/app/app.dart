@@ -42,7 +42,7 @@ class _J27State extends State<J27> {
             seedColor: Colors.indigo,
           ),
           appBarTheme: AppBarTheme(
-            backgroundColor: Colors.orange,
+            backgroundColor: Colors.transparent,
             foregroundColor: Colors.white,
             elevation: 0,
           ),
