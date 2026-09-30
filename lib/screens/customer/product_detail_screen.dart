@@ -76,7 +76,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         height: 280,
                         width: double.infinity,
 
-                        color: Colors.orange.shade200,
+                        color: Colors.orange.shade100,
 
                         child: Center(
                           child: Icon(

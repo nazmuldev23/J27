@@ -448,7 +448,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     width: double.infinity,
-                    color: Colors.orange.shade200,
+                    color: Colors.orange.shade100,
                     child: Center(
                       child: Icon(Icons.shopping_bag, size: 40, color: Colors.orange),
                     ),
