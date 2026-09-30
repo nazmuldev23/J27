@@ -448,9 +448,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     width: double.infinity,
-                    color: Colors.indigo.shade100,
+                    color: Colors.orange.shade200,
                     child: Center(
-                      child: Icon(Icons.shopping_bag, size: 40, color: Colors.indigo.shade300),
+                      child: Icon(Icons.shopping_bag, size: 40, color: Colors.orange),
                     ),
                   ),
                   if (product.hasDiscount)
@@ -508,7 +508,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           '\$${product.effectivePrice.toStringAsFixed(2)}',
                           style: const TextStyle(
-                            color: Colors.indigo,
+                            color: Colors.orange,
                             fontWeight: FontWeight.bold,
                             fontSize: 13,
                           ),
