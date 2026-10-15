@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:j27/screens/customer/profile_screen.dart';
+import 'package:j27/screens/customer/widgets/product_card.dart';
 import 'package:j27/screens/customer/wishlist_screen.dart';
 import '../../providers/shop_provider.dart';
 import '../../models/product_model.dart';
@@ -216,7 +217,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisSpacing: 12,
                   ),
                   itemCount: searchResults.length,
-                  itemBuilder: (ctx, idx) => _buildProductCard(searchResults[idx]),
+                  itemBuilder: (ctx,idx) {
+                    final product = searchResults[idx];
+
+                    return ProductCard(product: product, shop: shop);
+                  },
                 ),
         ],
       ),
@@ -384,6 +389,9 @@ class _HomeScreenState extends State<HomeScreen> {
     required Color iconColor,
     required List<ProductModel> products,
   }) {
+
+    final shop = ShopProviderScope.of(context);
+
     if (products.isEmpty) return const SizedBox.shrink();
 
     return Column(
@@ -414,7 +422,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return Container(
                 width: 160,
                 margin: const EdgeInsets.symmetric(horizontal: 4),
-                child: _buildProductCard(product),
+                child: ProductCard(product: product, shop: shop),
               );
             },
           ),
@@ -423,114 +431,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildProductCard(ProductModel product) {
-    final shop = ShopProviderScope.of(context);
-    final isWishlisted = shop.isWishlisted(product.id);
 
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => ProductDetailScreen(product: product),
-            ),
-          );
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    color: Colors.orange.shade100,
-                    child: Image.asset('assets/product.png',fit: BoxFit.contain,),
-                  ),
-                  if (product.hasDiscount)
-                    Positioned(
-                      top: 8,
-                      left: 8,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Text(
-                          product.offerTag.isNotEmpty ? product.offerTag : 'OFFER',
-                          style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  Positioned(
-                    top: 4,
-                    right: 4,
-                    child: CircleAvatar(
-                      radius: 16,
-                      backgroundColor: Colors.white.withOpacity(0.8),
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        iconSize: 18,
-                        icon: Icon(
-                          isWishlisted ? Icons.favorite : Icons.favorite_border,
-                          color: isWishlisted ? Colors.red : Colors.grey,
-                        ),
-                        onPressed: () => shop.toggleWishlist(product),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
-                  ),
-                  const SizedBox(height: 4),
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Row(
-                      children: [
-                        Text(
-                          '\$${product.effectivePrice.toStringAsFixed(2)}',
-                          style: const TextStyle(
-                            color: Colors.orange,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                          ),
-                        ),
-                        if (product.hasDiscount) ...[
-                          const SizedBox(width: 4),
-                          Text(
-                            '\$${product.price.toStringAsFixed(2)}',
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              decoration: TextDecoration.lineThrough,
-                              fontSize: 11,
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
