@@ -32,25 +32,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final cartCount = shop.cartItems.length;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: IgnorePointer(
-              child: Opacity(
-                  opacity: 0.20,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/background.png',
-                      fit: BoxFit.cover,
-                    ),
-                  )
-              ),
-            ),
-          ),
-          IndexedStack(index: _currentIndex, children: _screens),
+      body: IndexedStack(index: _currentIndex, children: _screens),
 
-        ],
-      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,

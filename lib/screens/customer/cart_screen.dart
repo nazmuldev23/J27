@@ -41,8 +41,8 @@ class _CartScreenState extends State<CartScreen> {
     final cartItems = shop.cartItems;
 
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         title: Text(
             'My Cart (${cartItems.length})',
             style:TextStyle(
@@ -63,7 +63,7 @@ class _CartScreenState extends State<CartScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.shopping_cart_outlined, size: 80, color: Colors.grey.shade400),
+                  Icon(Icons.shopping_cart_outlined, size: 80, color: Colors.grey),
                   const SizedBox(height: 16),
                   const Text('Your cart is empty', style: TextStyle(fontSize: 18, color: Colors.grey)),
                 ],

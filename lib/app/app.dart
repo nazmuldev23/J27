@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:j27/screens/customer/profile_screen.dart';
-import 'package:j27/screens/customer/wishlist_screen.dart';
-import '../providers/shop_provider.dart';
-import '../screens/auth/login_screen.dart';
-import '../screens/main_navigation_screen.dart';
-import '../screens/splash_screen.dart';
+
+import 'package:j27/providers/shop_provider.dart';
+import 'package:j27/screens/splash_screen.dart';
+
+import '../widgets/global_background.dart';
+import 'app_theme.dart';
+import 'app_routing.dart';
 
 class J27 extends StatefulWidget {
   const J27({super.key});
@@ -35,38 +36,23 @@ class _J27State extends State<J27> {
       child: MaterialApp(
         title: 'J27 E-Commerce',
         debugShowCheckedModeBanner: false,
-
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.indigo,
-          ),
-          appBarTheme: AppBarTheme(
-
+        // App Theme
+        theme: AppTheme.lightTheme.copyWith(
+          scaffoldBackgroundColor: Colors.transparent,
+          appBarTheme: AppTheme.lightTheme.appBarTheme.copyWith(
             backgroundColor: Colors.transparent,
-            foregroundColor: Colors.black,
             elevation: 0,
-          ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
-              foregroundColor: Colors.white,
-            )
-          ),
-          iconTheme: IconThemeData(
-            color: Colors.lightBlue
+            surfaceTintColor: Colors.transparent,
           )
         ),
-
+        builder: (context, child) {
+          return GlobalBackground(child: child ?? const SizedBox.shrink());
+        },
+        // Initial Screen
         home: const SplashScreen(),
 
-        routes: {
-          LoginScreen.name: (context) => const LoginScreen(),
-          MainNavigationScreen.name: (context) => const MainNavigationScreen(),
-          WishlistScreen.name: (context)=> const  WishlistScreen(),
-          ProfileScreen.name: (context)=> const ProfileScreen(),
-
-        },
+        // Named Routes
+        routes: AppRouting.routes,
       ),
     );
   }

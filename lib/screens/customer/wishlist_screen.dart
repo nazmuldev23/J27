@@ -12,6 +12,7 @@ class WishlistScreen extends StatelessWidget {
     final wishlist = shop.wishlistItems;
 
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text(
